@@ -1,4 +1,3 @@
-*.iml
 .gradle
 /local.properties
 /.idea/caches
@@ -7,25 +6,16 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+.idea
+/*/.idea
+../.DS_Store
+*.DS_Store
+*../.DS_Store
 .DS_Store
 /build
 /captures
 .externalNativeBuild
 .cxx
-local.properties
-
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.idea
-/*/.idea
-.DS_Store
-../.DS_Store
-*.DS_Store
-*../.DS_Store
-/build
-/captures
 
 # Built application files
 *.apk

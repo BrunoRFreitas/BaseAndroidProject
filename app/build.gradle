@@ -40,9 +40,12 @@ android {
 
 dependencies {
 
-    api project(':features:feature1')
+    implementation project(':core:domain')
+    api project(':core:data')
 
-    implementation androidLibraries
+//    api project(':features:feature1')
+
+    implementation androidLibraries + koinLibraries
 
     testImplementation commonTestLibraries
     androidTestImplementation androidTestImplementationLibraries

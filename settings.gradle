@@ -10,3 +10,4 @@ rootProject.name = "MultiModulesBaseProject"
 include ':app'
 include ':features:feature1'
 include ':core:data'
+include ':core:domain'

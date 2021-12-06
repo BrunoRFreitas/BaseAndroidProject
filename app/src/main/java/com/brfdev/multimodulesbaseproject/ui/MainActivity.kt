@@ -1,9 +1,11 @@
 package com.brfdev.multimodulesbaseproject.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import com.brfdev.feature1.FeatureOneActivity
 import com.brfdev.multimodulesbaseproject.BuildConfig
 import com.brfdev.multimodulesbaseproject.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         mViewModel.getTeste()
         mViewModel.testeSuccess.observe(this){
             Log.d("TESTE-BRUNO", it.nome)
+
+            val intent = Intent(this, FeatureOneActivity::class.java)
+            startActivity(intent)
         }
     }
 

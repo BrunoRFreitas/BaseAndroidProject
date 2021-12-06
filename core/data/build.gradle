@@ -7,9 +7,8 @@ apply from: rootProject.file('base-build.gradle')
 
 dependencies {
 
-    implementation project(':core:domain')
-
-    implementation androidLibraries + networkLibraries + coroutinesLibrary
+    api project(':core:domain')
+    api networkLibraries
 
     testImplementation commonTestLibraries
     androidTestImplementation androidTestImplementationLibraries

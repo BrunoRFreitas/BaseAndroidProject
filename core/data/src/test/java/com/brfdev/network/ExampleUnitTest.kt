@@ -1,4 +1,4 @@
-package com.brfdev.data
+package com.brfdev.network
 
 import org.junit.Test
 

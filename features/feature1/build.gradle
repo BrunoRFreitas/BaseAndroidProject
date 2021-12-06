@@ -6,10 +6,9 @@ plugins {
 apply from: rootProject.file('base-build.gradle')
 
 dependencies {
+    api project(':core:data')
 
-//    api project(':core:data')
-
-    implementation androidLibraries
+    implementation androidLibraries + koinLibraries
 
     testImplementation commonTestLibraries
     androidTestImplementation androidTestImplementationLibraries

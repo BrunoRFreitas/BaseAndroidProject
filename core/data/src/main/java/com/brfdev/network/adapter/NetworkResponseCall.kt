@@ -1,6 +1,8 @@
 package com.brfdev.network.adapter
 
 import com.brfdev.domain.model.NetworkResponse
+import com.brfdev.domain.model.ErrorResponse
+import com.brfdev.domain.model.NetworkException
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,18 +22,12 @@ class NetworkResponseCall<S : Any, E : Any>(
                 val code = response.code()
                 val error = response.errorBody()
 
-                if (response.isSuccessful) {
+                val result = if (response.isSuccessful) {
                     if (body != null) { //TODO - Ver se vai aceitar retorno VOID
-                        callback.onResponse(
-                            this@NetworkResponseCall,
-                            Response.success(NetworkResponse.Success(body))
-                        )
+                        NetworkResponse.Success(body)
                     } else {
                         // Response is successful but the body is null
-                        callback.onResponse(
-                            this@NetworkResponseCall,
-                            Response.success(NetworkResponse.UnknownError(null))
-                        )
+                            NetworkResponse.ApiError(null, code, NetworkException.getNotFoundException())
                     }
                 } else {
                     val errorBody = when {
@@ -44,29 +40,39 @@ class NetworkResponseCall<S : Any, E : Any>(
                         }
                     }
 
-                    if(errorBody != null){
-                        callback.onResponse(
-                            this@NetworkResponseCall,
-                            Response.success(NetworkResponse.ApiError(errorBody, code))
-                        )
+                    if (errorBody != null) {
+                        NetworkResponse.ApiError(errorBody, code, null)
                     } else {
-                        callback.onResponse(
-                            this@NetworkResponseCall,
-                            Response.success(NetworkResponse.UnknownError(null))
-                        )
+                        NetworkResponse.ApiError(null, null, null)
                     }
                 }
+
+                callback.onResponse(this@NetworkResponseCall, Response.success(result))
+
             }
 
             override fun onFailure(call: Call<S>, throwable: Throwable) {
-                val networkResponse = when (throwable){
-                    is IOException -> NetworkResponse.NetworkError (throwable)
-                    else -> NetworkResponse.UnknownError(throwable)
+                val networkResponse = when (throwable) {
+                    is IOException -> NetworkResponse.ApiError(null, null, NetworkException.getNotFoundException())
+                    else -> NetworkResponse.ApiError(null, null, NetworkException.getNotFoundException())
                 }
                 callback.onResponse(this@NetworkResponseCall, Response.success(networkResponse))
             }
 
         })
 
-    override fun cloneImpl(): Call<NetworkResponse<S, E>> = NetworkResponseCall(delegate.clone(), errorConverter)
+    override fun cloneImpl(): Call<NetworkResponse<S, E>> =
+        NetworkResponseCall(delegate.clone(), errorConverter)
+
+//    private fun exceptionError(
+//        errorResponse: ErrorResponse,
+//        call: Call<*>,
+//        callback: Callback<Result<S>>
+//    ): GenericResponse<ErrorResponse> {
+//        val error = GenericResponse<ErrorResponse>()
+//        error.error = errorResponse
+//        error.error.callback = callback
+//        error.error.call = call.clone()
+//        return error
+//    }
 }

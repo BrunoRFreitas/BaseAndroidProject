@@ -5,6 +5,7 @@
     <application>
 
         <activity android:name=".FeatureOneActivity"/>
+        <activity android:name=".FeatureOneActivityV2"/>
 
 
     </application>

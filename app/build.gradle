@@ -40,7 +40,7 @@ android {
 
 dependencies {
 
-    implementation project(':features:feature1')
+    api project(':features:feature1')
 
     implementation androidLibraries + koinLibraries
 

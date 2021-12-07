@@ -3,34 +3,38 @@ package com.brfdev.feature1
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.brfdev.domain.model.Error
+import com.brfdev.domain.model.ErrorResponse
 import com.brfdev.domain.model.NetworkResponse
-import com.brfdev.domain.model.ResponseTesteSuccess
 import com.brfdev.domain.repository.ErrorRepository
-import com.brfdev.domain.repository.SuccessRepository
+import com.brfdev.feature1.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class FeatureOneViewModel(
     private val repositoryError: ErrorRepository
-) : ViewModel() {
+) : BaseViewModel() {
 
-    private val _testeError = MutableLiveData<Error>()
-    val testeError: LiveData<Error> = _testeError
+    private val _testeError = MutableLiveData<ErrorResponse>()
+    val testeError: LiveData<ErrorResponse> = _testeError
 
     fun getTesteError() {
 
         viewModelScope.launch {
+            onProgress.value = true
             when (val result = repositoryError.getTesteError()) {
                 is NetworkResponse.Success -> {
+                    onProgress.value = false
                     Log.e("BRUNO-TESTE", "NetworkSuccess")
                 }
                 is NetworkResponse.ApiError -> {
-                    _testeError.postValue(result.body)
+                    onErrorReturn(result)
+
+                    if(result.body != null){
+                        Log.e("BRUNO-TESTE", "ApiError ${result.body!!.erro}")
+                    }else{
+                        Log.e("BRUNO-TESTE", "ApiError ${result.exception!!.message}")
+                    }
                 }
-                is NetworkResponse.NetworkError -> Log.e("BRUNO-TESTE", "NetworkError")
-                is NetworkResponse.UnknownError -> Log.e("BRUNO-TESTE", "UnknownError")
             }
         }
     }

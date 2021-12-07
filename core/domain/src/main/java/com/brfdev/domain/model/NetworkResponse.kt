@@ -12,15 +12,7 @@ sealed class NetworkResponse<out T: Any, out U: Any>{
     /**
      * Failure response with body
      */
-    data class ApiError<U: Any>(val body: U, val code: Int) : NetworkResponse<Nothing, U>()
+    data class ApiError<U: Any>(val body: U?, val code: Int?, val exception: NetworkException?) : NetworkResponse<Nothing, U>()
 
-    /**
-     * Network error
-     */
-    data class NetworkError(val error: IOException): NetworkResponse<Nothing, Nothing>()
-
-    /**
-     * For example, json parsing error
-     */
-    data class UnknownError(val error: Throwable?) : NetworkResponse<Nothing, Nothing>()
+//    data class ApiErrorV2<U: Any>(val body: U?, val code: Int?, val exception: Exception?) : NetworkResponse<Nothing, U>()
 }

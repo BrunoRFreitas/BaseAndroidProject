@@ -1,5 +1,6 @@
 package com.brfdev.feature1
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -22,7 +23,8 @@ class FeatureOneActivity: AppCompatActivity() {
         val btnFeatureOne = findViewById<Button>(R.id.btn_feature_one)
 
         btnFeatureOne.setOnClickListener{
-            mViewModel.getTesteError()
+            val intent = Intent(this, FeatureOneActivityV2::class.java)
+            startActivity(intent)
         }
 
         mViewModel.testeError.observe(this){

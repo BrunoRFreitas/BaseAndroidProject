@@ -8,7 +8,7 @@ apply from: rootProject.file('base-build.gradle')
 dependencies {
     api project(':core:data')
 
-    implementation androidLibraries + koinLibraries
+    implementation androidLibraries + koinLibraries + lottie
 
     testImplementation commonTestLibraries
     androidTestImplementation androidTestImplementationLibraries

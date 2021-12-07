@@ -18,8 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getTestSuccess()
         setVersionName(BuildConfig.VERSION_NAME)
+//        getTestSuccess()
+        val intent = Intent(this, FeatureOneActivity::class.java)
+        startActivity(intent)
     }
 
     private fun getTestSuccess() {

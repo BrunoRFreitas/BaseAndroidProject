@@ -26,9 +26,13 @@ class TesteViewModel(
                 is NetworkResponse.Success -> {
                     _testeSuccess.postValue(result.body)
                 }
-                is NetworkResponse.ApiError -> Log.e("BRUNO-TESTE", "ApiError ${result.body.erro}")
-                is NetworkResponse.NetworkError -> Log.e("BRUNO-TESTE", "NetworkError")
-                is NetworkResponse.UnknownError -> Log.e("BRUNO-TESTE", "UnknownError")
+                is NetworkResponse.ApiError -> {
+                    if(result.body != null){
+                        Log.e("BRUNO-TESTE", "ApiError ${result.body!!.erro}")
+                    }else{
+                        Log.e("BRUNO-TESTE", "ApiError ${result.exception!!.message}")
+                    }
+                }
             }
         }
     }

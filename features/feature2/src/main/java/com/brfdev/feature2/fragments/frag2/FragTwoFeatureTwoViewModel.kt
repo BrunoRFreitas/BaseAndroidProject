@@ -1,39 +1,33 @@
-package com.brfdev.feature1
+package com.brfdev.feature2.fragments.frag2
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.brfdev.domain.model.ErrorResponse
 import com.brfdev.domain.model.NetworkResponse
+import com.brfdev.domain.model.ResponseTesteSuccess
 import com.brfdev.domain.repository.ErrorRepository
+import com.brfdev.domain.repository.SuccessRepository
 import com.brfdev.ui_components.base.BaseViewModel
 import kotlinx.coroutines.launch
 
-class FeatureOneViewModel(
+class FragTwoFeatureTwoViewModel(
     private val repositoryError: ErrorRepository
-) : BaseViewModel() {
+): BaseViewModel() {
 
-    private val _testeError = MutableLiveData<ErrorResponse>()
-    val testeError: LiveData<ErrorResponse> = _testeError
+    private val _testeError = MutableLiveData<Void>()
+    val testeError: LiveData<Void> = _testeError
 
-    fun getTesteError() {
+    fun getTesteSuccess() {
 
         viewModelScope.launch {
             onProgress.value = true
             when (val result = repositoryError.getTesteError()) {
                 is NetworkResponse.Success -> {
                     onProgress.value = false
-                    Log.e("BRUNO-TESTE", "NetworkSuccess")
+                    _testeError.postValue(result.body)
                 }
                 is NetworkResponse.ApiError -> {
                     onErrorReturn(result)
-
-                    if(result.body != null){
-                        Log.e("BRUNO-TESTE", "ApiError ${result.body!!.erro}")
-                    }else{
-                        Log.e("BRUNO-TESTE", "ApiError ${result.exception!!.message}")
-                    }
                 }
             }
         }

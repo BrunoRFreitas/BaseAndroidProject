@@ -28,3 +28,5 @@ inline fun <F : Fragment, reified V : Any> F.navDirections() = inject<V> {
 fun Fragment.getNavigatorGraphId() = findNavController().currentDestination?.parent?.id ?: 0
 
 fun Fragment.getResourceName(id: Int): String = resources.getResourceEntryName(id)
+
+fun Fragment.popBackStack() = findNavController().popBackStack()

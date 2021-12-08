@@ -7,8 +7,10 @@ apply from: rootProject.file('base-build.gradle')
 
 dependencies {
 
-    implementation project(':core:domain')
-    api androidLibraries + koinLibraries + lottie + jetPackNavigation
+    implementation project(':features:feature1')
+    implementation project(':features:feature2')
+
+    implementation androidLibraries + koinLibraries + jetPackNavigation
 
     testImplementation commonTestLibraries
     androidTestImplementation androidTestImplementationLibraries

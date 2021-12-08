@@ -2,6 +2,7 @@ package com.brfdev.multimodulesbaseproject
 
 import android.app.Application
 import com.brfdev.di.dataSourceModule
+import com.brfdev.di.navigation.navigationModule
 import com.brfdev.di.networkModule
 import com.brfdev.di.repositoryModule
 import com.brfdev.di.viewModelModule
@@ -24,7 +25,8 @@ class MainApplication: Application() {
                     viewModelModule,
                     networkModule,
                     repositoryModule,
-                    dataSourceModule
+                    dataSourceModule,
+                    navigationModule
                 )
             )
         }

@@ -41,11 +41,9 @@ android {
 dependencies {
 
     implementation project(':core:di')
-    implementation project(':core:domain')
-//    implementation project(':features:feature1') //TODO - Remover
+    implementation project(':core:navigation')
 
-
-    implementation androidLibraries + koinLibraries
+    implementation androidLibraries + koinLibraries + jetPackNavigation
 
     testImplementation commonTestLibraries
     androidTestImplementation androidTestImplementationLibraries

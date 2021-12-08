@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feature_one_nav_graph"
+    app:startDestination="@id/id_frag_one_feature_one">
+
+    <fragment
+        android:id="@+id/id_frag_one_feature_one"
+        android:name="com.brfdev.feature1.frag1.FragOneFeatureOne"
+        android:label="FragOneFeatureOne"
+        tools:layout="@layout/fragment_one_feature_one">
+
+        <action
+            android:id="@+id/navigate_to_frag_two_feature_one"
+            app:destination="@id/id_frag_two_feature_one"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/id_frag_two_feature_one"
+        android:name="com.brfdev.feature1.frag2.FragTwoFeatureOne"
+        android:label="FragTwoFeatureOne"
+        tools:layout="@layout/fragment_two_feature_one">
+
+    </fragment>
+
+</navigation>

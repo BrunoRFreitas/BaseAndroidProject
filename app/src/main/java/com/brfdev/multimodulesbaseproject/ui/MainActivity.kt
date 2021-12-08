@@ -15,14 +15,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setVersionName(BuildConfig.VERSION_NAME)
-        showActivityFeatureOne()
+//        setVersionName(BuildConfig.VERSION_NAME)
+//        showActivityFeatureOne()
     }
 
-    private fun setVersionName(versionName: String) {
-        val tvVersao = findViewById<TextView>(R.id.tv_versao)
-        tvVersao.text = versionName
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    private fun setVersionName(versionName: String) {
+//        val tvVersao = findViewById<TextView>(R.id.tv_versao)
+//        tvVersao.text = versionName
+//    }
 
     fun showActivityFeatureOne() {
         val bundle = Bundle()

@@ -4,6 +4,7 @@ ext {
     retrofit_version = '2.9.0'
     koin_version = '3.1.2'
     lottieVersion = "4.2.2"
+    navigation_version = '2.3.5'
 
 
     android = [
@@ -24,6 +25,12 @@ ext {
             'androidx.appcompat:appcompat:1.2.0',
             'com.google.android.material:material:1.4.0',
             'androidx.constraintlayout:constraintlayout:2.1.2'
+    ]
+
+    jetPackNavigation = [
+            //Navigation
+            "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+            "androidx.navigation:navigation-ui-ktx:$navigation_version",
     ]
 
     commonTestLibraries = [

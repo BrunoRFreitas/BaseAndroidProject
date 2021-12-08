@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.brfdev.domain.model.ErrorResponse
 import com.brfdev.domain.model.NetworkResponse
 import com.brfdev.domain.repository.ErrorRepository
-import com.brfdev.feature1.base.BaseViewModel
+import com.brfdev.ui_components.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class FeatureOneViewModel(

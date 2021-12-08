@@ -1,12 +1,9 @@
 package com.brfdev.feature1
 
-import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.brfdev.feature1.base.BaseActivity
-import com.brfdev.feature1.base.BaseViewModel
+import com.brfdev.ui_components.base.BaseActivity
+import com.brfdev.ui_components.base.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FeatureOneActivityV2 : BaseActivity() {

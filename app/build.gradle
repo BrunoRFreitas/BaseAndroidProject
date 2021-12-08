@@ -40,7 +40,10 @@ android {
 
 dependencies {
 
-    api project(':features:feature1')
+    implementation project(':core:di')
+    implementation project(':core:domain')
+//    implementation project(':features:feature1') //TODO - Remover
+
 
     implementation androidLibraries + koinLibraries
 

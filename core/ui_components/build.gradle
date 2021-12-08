@@ -1,0 +1,15 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: rootProject.file('base-build.gradle')
+
+dependencies {
+
+    implementation project(':core:domain')
+    implementation androidLibraries + koinLibraries + lottie
+
+    testImplementation commonTestLibraries
+    androidTestImplementation androidTestImplementationLibraries
+}

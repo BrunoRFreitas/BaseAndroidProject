@@ -9,5 +9,9 @@ dependencyResolutionManagement {
 rootProject.name = "MultiModulesBaseProject"
 include ':app'
 include ':features:feature1'
-include ':core:data'
+include ':core:data_remote'
 include ':core:domain'
+include ':core:di'
+include ':core:data'
+include ':features:feature2'
+include ':core:ui_components'

@@ -22,6 +22,10 @@
         android:label="FragTwoFeatureOne"
         tools:layout="@layout/fragment_two_feature_one">
 
+        <action
+            android:id="@+id/navigate_to_frag_one_feature_two"
+            app:destination="@id/feature_two_nav_graph"/>
+
     </fragment>
 
 </navigation>

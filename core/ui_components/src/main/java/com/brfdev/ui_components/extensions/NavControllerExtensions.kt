@@ -10,19 +10,23 @@ import androidx.navigation.Navigator
 fun NavController.safeNavigate(directions: NavDirections) = try {
     navigate(directions)
 } catch (e: Exception) {
+    e.printStackTrace()
 }
 
 fun NavController.safeNavigate(directions: NavDirections, navOptions: NavOptions? = null) = try {
     navigate(directions, navOptions)
 } catch (e: Exception) {
+    e.printStackTrace()
 }
 
 fun NavController.safeNavigate(directions: NavDirections, navigatorExtras: Navigator.Extras) = try {
     navigate(directions, navigatorExtras)
 } catch (e: Exception) {
+    e.printStackTrace()
 }
 
 fun NavController.safeNavigate(@IdRes resId: Int, args: Bundle? = null, navOptions: NavOptions? = null) = try {
     navigate(resId, args, navOptions)
 } catch (e: Exception) {
+    e.printStackTrace()
 }

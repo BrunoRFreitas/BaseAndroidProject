@@ -8,13 +8,14 @@ import com.brfdev.domain.model.ResponseTesteSuccess
 import com.brfdev.domain.repository.ErrorRepository
 import com.brfdev.domain.repository.SuccessRepository
 import com.brfdev.ui_components.base.BaseViewModel
+import com.brfdev.ui_components.utils.SingleLiveData
 import kotlinx.coroutines.launch
 
 class FragTwoFeatureTwoViewModel(
     private val repositoryError: ErrorRepository
 ): BaseViewModel() {
 
-    private val _testeError = MutableLiveData<Void>()
+    private val _testeError = SingleLiveData<Void>()
     val testeError: LiveData<Void> = _testeError
 
     fun getTesteSuccess() {

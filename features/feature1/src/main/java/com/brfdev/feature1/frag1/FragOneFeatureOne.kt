@@ -16,6 +16,7 @@ class FragOneFeatureOne: BaseFragment<FragmentOneFeatureOneBinding>(FragmentOneF
 
         binding.btnFragOneFeatureOne.setOnClickListener {
             mViewModel.getTesteSuccess()
+//            mNavigation.navigateToNext()
         }
 
         mViewModel.testeSuccess.observe(this){

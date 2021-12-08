@@ -7,13 +7,14 @@ import com.brfdev.domain.model.NetworkResponse
 import com.brfdev.domain.model.ResponseTesteSuccess
 import com.brfdev.domain.repository.SuccessRepository
 import com.brfdev.ui_components.base.BaseViewModel
+import com.brfdev.ui_components.utils.SingleLiveData
 import kotlinx.coroutines.launch
 
 class FragOneFeatureOneViewModel(
     private val repositorySuccess: SuccessRepository
 ): BaseViewModel() {
 
-    private val _testeSuccess = MutableLiveData<ResponseTesteSuccess>()
+    private val _testeSuccess = SingleLiveData<ResponseTesteSuccess>()
     val testeSuccess: LiveData<ResponseTesteSuccess> = _testeSuccess
 
     fun getTesteSuccess() {
